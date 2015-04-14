@@ -54,13 +54,11 @@ if __name__ == 'main':
     e = EventLoop()
     e.start()
 
-    #def ex1():
-    #    e.run(printer('ahoj'))
-    #    sleep(1)
-    #    e.run(printer('svet'))
-    #    sleep(1)
-    #    e.run(printer(':)'))
-    #ex1()
+    def ex1():
+        e.run(printer('ahoj'))
+        e.run(printer('svet'))
+        e.run(printer(':)'))
+    ex1()
 
 
     def ex2():

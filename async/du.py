@@ -2,30 +2,43 @@ from eventloop import EventLoop, my_print, printer
 from functools import partial
 
 class Promise():
+    """
+    Promises are bound to one (singleton) instance of EventLoop. Maybe it's not perfect, but it's ok
+    for the purpose of this assignment
+    """
 
     def __init__(self, resolver):
+        #TODO
         pass
 
 
     def then(self, then_fn):
+        #TODO
         pass
     
     def delayed(time, val = None):
         """
-        creates promise which resolves after time `time` with value `val`
+        creates promise which fulfills after time `time` with value `val`
         """
-
         def resolver(resolve, reject):
             e.wait(time, lambda: resolve(val))
 
         return Promise(resolver)
 
+    def read_file(filename):
+        """
+        creates promise which fulfills with the content of a given file
+        """
+        #TODO
+        pass
+
     def all(list_of_promises):
         """
-        Promise.all(list_of_promises) returns a new promise which resolves when all the promises from
-        the given argument resolve. Result is a list cotaining values of individual promises in
+        Promise.all(list_of_promises) returns a new promise which fulfills when all the promises from
+        the given argument fulfill. Result is a list cotaining values of individual promises in
         list_of_promises. Similar to bluebirdPromise.all
         """
+        #TODO
         pass
     
     def foreach(iterable, get_promise):
@@ -40,6 +53,14 @@ class Promise():
             wait for p to fulfill, then continue
 
         """
+        def _foreach(iterator):
+            try:
+                elem = next(iterator)
+            except StopIteration:
+                return 
+            #TODO 
+
+        _foreach(iter(iterable))
         pass
 
 
@@ -108,7 +129,7 @@ def test5():
     Tests await.
 
     Should print [0, 2, 4, 8, 10] after 5 seconds (because the last Promise from the given list
-    resolves after 5 seconds)
+    fulfills after 5 seconds)
     """
 
     list_of_promises = [Promise.delayed(5-i, 2*i) for i in range(5)]
