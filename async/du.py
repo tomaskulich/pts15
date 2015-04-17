@@ -3,7 +3,7 @@ from functools import partial
 
 class Promise():
     """
-    Promises are bound to one (singleton) instance of EventLoop. Maybe it's not perfect, but it's ok
+    Promises are bound to one (singleton) instance of EventLoop (stored in variable `e`). Maybe it's not perfect, but it's ok
     for the purpose of this assignment
     """
 
@@ -18,7 +18,8 @@ class Promise():
     
     def delayed(time, val = None):
         """
-        creates promise which fulfills after time `time` with value `val`
+        creates promise which fulfills after time `time` with value `val`; this is a complete
+        implementation, no TODO here.
         """
         def resolver(resolve, reject):
             e.wait(time, lambda: resolve(val))
@@ -35,8 +36,8 @@ class Promise():
     def all(list_of_promises):
         """
         Promise.all(list_of_promises) returns a new promise which fulfills when all the promises from
-        the given argument fulfill. Result is a list cotaining values of individual promises in
-        list_of_promises. Similar to bluebirdPromise.all
+        the given list fulfill. Result is a list cotaining values of individual promises in
+        list_of_promises. Similar to bluebird's Promise.all
         """
         #TODO
         pass
@@ -53,6 +54,8 @@ class Promise():
             wait for p to fulfill, then continue
 
         """
+
+        # you may find helpful this piece of code
         def _foreach(iterator):
             try:
                 elem = next(iterator)
