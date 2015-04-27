@@ -50,7 +50,7 @@ def printer(message):
         print(message)
     return res
 
-if __name__ == 'main':
+if __name__ == '__main__':
     e = EventLoop()
     e.start()
 
