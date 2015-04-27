@@ -129,14 +129,14 @@ def test4():
 
 def test5():
     """
-    Tests await.
+    Tests Promise.all.
 
     Should print [0, 2, 4, 8, 10] after 5 seconds (because the last Promise from the given list
     fulfills after 5 seconds)
     """
 
     list_of_promises = [Promise.delayed(5-i, 2*i) for i in range(5)]
-    Promise.await(list_of_promises).then(my_print)
+    Promise.all(list_of_promises).then(my_print)
 
 def test6():
     """
